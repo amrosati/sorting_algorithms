@@ -23,24 +23,27 @@ void insertion_sort_list(listint_t **list)
 			insertion_point = insertion_point->prev;
 
 		sorted = is_sorted(insertion_point == current->prev, current);
+		if (!sorted)
+		{
+			if (!insertion_point)
+			{
+				current->prev = NULL;
+				current->next = *list;
+				(*list)->prev = current;
+				(*list) = current;
+			}
+			else
+			{
+				current->next = insertion_point->next;
+				insertion_point->next = current;
+				current->prev = insertion_point;
+				current->next->prev = current;
+			}
 
-		if (!insertion_point)
-		{
-			current->prev = NULL;
-			current->next = *list;
-			(*list)->prev = current;
-			(*list) = current;
-		}
-		else if (!sorted)
-		{
-			current->next = insertion_point->next;
-			insertion_point->next = current;
-			current->prev = insertion_point;
-			current->next->prev = current;
+			print_list(*list);
 		}
 
 		current = next;
-		print_list(*list);
 	}
 }
 
