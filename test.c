@@ -7,26 +7,30 @@
  */
 int main(void)
 {
-	int arr1[] = {-79, -4, 30, 99, -47, 72, -19, -97, 47, 43, -39, 55, -30, -9, -90, -87, 13, -83, -59};
-	int arr2[] = {-74, 15, -24, -30, 27, 28, -93, 44, -36, 81, -33, -25, -11, -8, 13, 26, 21, 71, 86};
-	int arr3[] = {20, -47, 62, 56, 32, -36, -82, -96, -24, -48, 13, 80, -38, 73, -72, 34, -77, -81, 84};
+	listint_t *head = NULL;
+	int arr[] = {167, 178, 117, 113, 90, 132, -3, 111, 0, 138, -65, 99, 21, 200, 175, -47, -57, 199, 116, 157};
+	int arr2[] = {57, -89, 6, -46, 15, -1, -40, -50, 66, -22, 149, 131, -29, -93, 29, -99, 144, 87, 76, 56};
 
-	print_array(arr1, 19);
+	head = create_listint(arr, 20);
+
+	print_list(head);
 	printf("\n");
-	bubble_sort(arr1, 19);
+	insertion_sort_list(&head);
 	printf("\n");
-	print_array(arr1, 19);
-        printf("\n\t-----------------------------------------\n");
-	print_array(arr2, 19);
-        printf("\n");
-	bubble_sort(arr2, 19);
+	print_list(head);
+
+	printf("\n\n---------------------------\n\n");
+	free_list(head);
+	head = create_listint(arr2, 20);
+
+	print_list(head);
 	printf("\n");
-	print_array(arr2, 19);
-        printf("\n-------------------------------------------\n");
-	print_array(arr3, 19);
-        printf("\n");
-	bubble_sort(arr3, 19);
+	insertion_sort_list(&head);
 	printf("\n");
-	print_array(arr1, 19);
+	print_list(head);
+
+	free_list(head);
+	printf("\n\n--------------------\n\nDONE\n");
+
 	return 0;
 }
