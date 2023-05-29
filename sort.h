@@ -33,11 +33,14 @@ void print_list(const listint_t *);
 /** Utils **/
 void swap(int *, int *);
 int is_sorted(int, listint_t *);
+size_t partition(int *, size_t, size_t, size_t);
+void sort(int *, size_t, int, size_t);
 
 /** Algorithms **/
 void bubble_sort(int *, size_t);
 void insertion_sort_list(listint_t **list);
 void selection_sort(int *, size_t);
+void quick_sort(int *, size_t);
 
 /** Linked List Ops **/
 listint_t *create_listint(const int *, size_t);
