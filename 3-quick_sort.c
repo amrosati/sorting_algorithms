@@ -9,39 +9,48 @@
  */
 void quick_sort(int *array, size_t size)
 {
-	size_t lo, hi;
+	if (!array)
+		return;
 
-	lo = 0;
-	hi = size - 1;
-
-	sort(array, size, lo, hi);
+	sort(array, 0, size - 1);
 }
 
 /**
  * partition - Partition the array using Lomuto partition scheme
  *
  * @array: Array to partition
- * @size: Array size
  * @lo: Lowest index in @array
  * @hi: Highest index in @array
  *
  * Return: The pivot index
  */
-size_t partition(int *array, size_t size, size_t lo, size_t hi)
+int partition(int *array, int lo, int hi)
 {
-	int pivot = array[hi];
-	int i, j;
+	int pivot = array[hi], i, j;
+	static int size, k;
 
-	for (i = (int) lo - 1, j = (int) lo; j < (int) hi; j++)
+	if (!k)
+	{
+		k++;
+		size = hi + 1;
+	}
+
+	for (i = lo, j = lo; j < hi; j++)
 		if (array[j] <= pivot)
 		{
+			if (i != j)
+			{
+				swap(&array[i], &array[j]);
+				print_array(array, size);
+			}
 			i++;
-			swap(&array[i], &array[j]);
 		}
 
-	i++;
-	swap(&array[i], &array[hi]);
-	print_array(array, size);
+	if (i != hi)
+	{
+		swap(&array[i], &array[hi]);
+		print_array(array, size);
+	}
 
 	return (i);
 }
@@ -50,21 +59,20 @@ size_t partition(int *array, size_t size, size_t lo, size_t hi)
  * sort - Recursively sorts the array
  *
  * @array: The array to sort
- * @size: Array size
  * @lo: Lowest index
  * @hi: Highest index
  */
-void sort(int *array, size_t size, int lo, size_t hi)
+void sort(int *array, int lo, int hi)
 {
-	size_t p;
+	int p;
 
-	if (lo >= (int) hi || lo < 0)
+	if (lo >= hi || lo < 0)
 		return;
 
-	p = partition(array, size, (size_t) lo, hi);
+	p = partition(array, lo, hi);
 
-	sort(array, size, lo, p - 1);
-	sort(array, size, p + 1, hi);
+	sort(array, lo, p - 1);
+	sort(array, p + 1, hi);
 }
 
 /**

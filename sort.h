@@ -33,8 +33,8 @@ void print_list(const listint_t *);
 /** Utils **/
 void swap(int *, int *);
 int is_sorted(int, listint_t *);
-size_t partition(int *, size_t, size_t, size_t);
-void sort(int *, size_t, int, size_t);
+int partition(int *, int, int);
+void sort(int *, int, int);
 
 /** Algorithms **/
 void bubble_sort(int *, size_t);
