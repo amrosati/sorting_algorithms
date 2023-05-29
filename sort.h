@@ -37,6 +37,7 @@ int is_sorted(int, listint_t *);
 /** Algorithms **/
 void bubble_sort(int *, size_t);
 void insertion_sort_list(listint_t **list);
+void selection_sort(int *, size_t);
 
 /** Linked List Ops **/
 listint_t *create_listint(const int *, size_t);
