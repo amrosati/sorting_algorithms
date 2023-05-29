@@ -1,4 +1,4 @@
-#include "sort.h"
+#include "../sort.h"
 
 /**
  * main - test code
@@ -8,10 +8,11 @@
 int main(void)
 {
 	listint_t *head = NULL;
-	int arr[] = {167, 178, 117, 113, 90, 132, -3, 111, 0, 138, -65, 99, 21, 200, 175, -47, -57, 199, 116, 157};
+	int arr[] = {19, 48, 99, 71, 13, 52, 96, 73, 86, 7};
 	int arr2[] = {57, -89, 6, -46, 15, -1, -40, -50, 66, -22, 149, 131, -29, -93, 29, -99, 144, 87, 76, 56};
+	size_t n = sizeof(arr) / sizeof(arr[0]);
 
-	head = create_listint(arr, 20);
+	head = create_listint(arr, n);
 
 	print_list(head);
 	printf("\n");
