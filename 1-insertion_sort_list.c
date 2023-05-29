@@ -41,10 +41,11 @@ void insertion_sort_list(listint_t **list)
 				current->prev = insertion_point;
 				current->next->prev = current;
 			}
+
+			print_list(*list);
 		}
 
 		current = next;
-		print_list(*list);
 	}
 }
 
